@@ -3,6 +3,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.firefox.options import Options
 import functools
 import os
 import time
@@ -35,7 +36,9 @@ def wait_done(driver):
 
 
 def get_disponibilita(codice_fiscale, codice_ricetta):
-    driver = webdriver.Firefox()
+    options = Options()
+    options.headless = True
+    driver = webdriver.Firefox(options=options)
     driver.get(url_sardegna)
     try:
 
