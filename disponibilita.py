@@ -10,6 +10,7 @@ import time
 from secrets import codice_fiscale, codice_ricetta
 
 os.environ["TMPDIR"] = "/home/sof/snap/firefox/common/tmp"
+os.environ["MOZ_HEADLESS"] = "1"
 
 url_sardegna = "https://cupweb.sardegnasalute.it/web/guest/ricetta-elettronica?#!"
 
@@ -37,7 +38,7 @@ def wait_done(driver):
 
 def get_disponibilita(codice_fiscale, codice_ricetta):
     options = Options()
-    options.headless = True
+    options.add_argument("--headless")
     driver = webdriver.Firefox(options=options)
     driver.get(url_sardegna)
     try:
